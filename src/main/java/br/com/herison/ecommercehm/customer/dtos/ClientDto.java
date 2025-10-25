@@ -4,7 +4,7 @@ import java.util.List;
 
 public record ClientDto(
         String name,
-        String cpf,
+        String document,
         String email,
         String phone,
         List<AddressDto> addresses

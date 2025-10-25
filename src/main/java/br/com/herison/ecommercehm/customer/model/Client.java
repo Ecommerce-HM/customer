@@ -18,8 +18,8 @@ public class Client {
     @Column(name = "name", nullable = false, length = 150)
     private String name;
 
-    @Column(name = "cpf", nullable = false, length = 11, unique = true)
-    private String cpf;
+    @Column(name = "document", nullable = false, length = 11, unique = true)
+    private String document;
 
     @Column(name = "email", length = 150)
     private String email;
