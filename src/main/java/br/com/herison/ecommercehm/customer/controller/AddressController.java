@@ -1,0 +1,27 @@
+package br.com.herison.ecommercehm.customer.controller;
+
+import br.com.herison.ecommercehm.customer.dtos.AddressDto;
+import br.com.herison.ecommercehm.customer.service.AddressService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/addresses")
+@RequiredArgsConstructor
+public class AddressController {
+
+    private final AddressService addressService;
+
+    @PostMapping
+    public ResponseEntity<AddressDto> save(AddressDto addressDto, Long clientId){
+        return ResponseEntity.ok(addressService.save(addressDto, clientId));
+    }
+
+    @GetMapping("/{code}")
+    public ResponseEntity<List<AddressDto>> findById(@PathVariable Long code) {
+        return ResponseEntity.ok(addressService.findByClient(code));
+    }
+}
