@@ -24,6 +24,9 @@ public class Address {
     @Column(name = "number", length = 10)
     private String number;
 
+    @Column(name = "complement", length = 100)
+    private String complement;
+
     @Column(name = "zipcode", length = 20)
     private String zipcode;
 
