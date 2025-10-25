@@ -22,6 +22,12 @@ public class AddressController {
 
     @GetMapping("/{code}")
     public ResponseEntity<List<AddressDto>> findById(@PathVariable Long code) {
-        return ResponseEntity.ok(addressService.findByClient(code));
+        return ResponseEntity.ok(addressService.findByAddress(code));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+        addressService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
