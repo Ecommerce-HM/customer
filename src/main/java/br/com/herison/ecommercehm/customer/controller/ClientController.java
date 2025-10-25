@@ -14,12 +14,18 @@ public class ClientController {
     private final ClientService clientService;
 
     @PostMapping
-    public ResponseEntity<ClientDto> save(ClientDto clientDto){
+    public ResponseEntity<ClientDto> save(@RequestBody ClientDto clientDto){
         return ResponseEntity.ok(clientService.save(clientDto));
     }
 
     @GetMapping("/{code}")
     public ResponseEntity<ClientDto> findById(@PathVariable Long code) {
         return ResponseEntity.ok(clientService.findById(code));
+    }
+
+    @DeleteMapping("/{code}")
+    public ResponseEntity<Void> delete(@PathVariable("code") Long code){
+        clientService.delete(code);
+        return ResponseEntity.noContent().build();
     }
 }

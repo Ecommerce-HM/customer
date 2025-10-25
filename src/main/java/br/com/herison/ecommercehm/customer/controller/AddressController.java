@@ -15,8 +15,8 @@ public class AddressController {
 
     private final AddressService addressService;
 
-    @PostMapping
-    public ResponseEntity<AddressDto> save(AddressDto addressDto, Long clientId){
+    @PostMapping("/{clientId}")
+    public ResponseEntity<AddressDto> save(@RequestBody AddressDto addressDto, @PathVariable("clientId") Long clientId){
         return ResponseEntity.ok(addressService.save(addressDto, clientId));
     }
 
