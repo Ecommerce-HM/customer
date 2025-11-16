@@ -48,10 +48,11 @@ class ClientServiceTest {
         client.setEmail("herisson@example.com");
 
         clientDto = new ClientDto(
+                1L,
                 "Herison Maciel",
                 "0513849651303",
                 "herisson@example.com",
-                "8855223366", null);
+                "8855223366", true, null);
     }
 
     @Test

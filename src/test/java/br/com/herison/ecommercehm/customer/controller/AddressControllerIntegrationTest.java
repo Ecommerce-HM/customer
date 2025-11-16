@@ -52,7 +52,7 @@ public class AddressControllerIntegrationTest {
         client = clientRepository.save(client);
 
         AddressDto addressDto = new AddressDto(
-                (Long) 1L,
+                null,
                 "Fortaleza",
                 "Meireles",
                 "casa b",

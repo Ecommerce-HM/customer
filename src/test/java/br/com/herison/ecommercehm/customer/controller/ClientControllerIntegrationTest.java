@@ -37,10 +37,11 @@ public class ClientControllerIntegrationTest {
     @DisplayName("POST /api/clients - should create client successfully")
     void shouldCreateClientSuccessfully() throws Exception {
         ClientDto dto = new ClientDto(
+                1L,
                 "Herison Maciel",
                 "6845149865",
                 "herison@example.com",
-                "89598426454",null);
+                "89598426454",true, null);
 
         mockMvc.perform(post("/api/clients")
                 .contentType(MediaType.APPLICATION_JSON)
