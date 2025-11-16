@@ -1,0 +1,39 @@
+name: 📦 Build & Test - Customer Microservice
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    name: 🔨 Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout do código
+        uses: actions/checkout@v4
+
+      - name: ☕ Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: 🧪 Build com Maven + Testes
+        run: mvn clean verify -Dspring.profiles.active=test
+
+      - name: 📄 Armazenar resultados dos testes (JUnit)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report
+          path: target/surefire-reports/
+
+      - name: 📊 Upload de cobertura (Jacoco - opcional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
+
